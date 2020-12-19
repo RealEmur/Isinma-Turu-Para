@@ -33,7 +33,7 @@ public Action CS_OnBuyCommand(int client, const char[] weapon)
 		SetEntProp(client, Prop_Send, "m_iAccount", g_para.IntValue);
 	}
 }
-stock bool InWarmup()
+stock bool IsWarmup()
 {
 	return GameRules_GetProp("m_bWarmupPeriod") != 0;
 }
