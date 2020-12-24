@@ -21,19 +21,19 @@ public void OnPluginStart()
 public Action oyuncudogdu(Event event, const char[] name, bool dontBroadcast)
 {
 	int client = GetClientOfUserId(event.GetInt("userid"));
-	if (IsWarmup)
+	if (IsWarmup())
 	{
 		SetEntProp(client, Prop_Send, "m_iAccount", g_para.IntValue);
 	}
 }
 public Action CS_OnBuyCommand(int client, const char[] weapon)
 {
-	if (IsWarmup)
+	if (IsWarmup())
 	{
 		SetEntProp(client, Prop_Send, "m_iAccount", g_para.IntValue);
 	}
 }
-stock bool IsWarmup()
+public bool IsWarmup()
 {
-	return GameRules_GetProp("m_bWarmupPeriod") != 0;
+	return (GameRules_GetProp("m_bWarmupPeriod") == 1) ? true : false;
 }
